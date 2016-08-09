@@ -1,6 +1,8 @@
 #!/bin/bash
-docker stop web db
-docker rm web db
+docker-compose stop
+docker-compose rm
 sudo rm -rf db
-mkdir db
-docker rmi cpa_php
+sudo rm -rf logs
+mkdir db logs
+touch ./logs/nginx-access.log
+touch ./logs/nginx-error.log
