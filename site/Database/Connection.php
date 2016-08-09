@@ -9,6 +9,7 @@ class Connection{
 
     public function __construct(){
         $this->iniData = parse_ini_file(self::INIFILE);
+        dump($this->iniData);
     }
 
     public function connection(){
