@@ -1,0 +1,33 @@
+php:
+  container_name: web
+  build: .
+  ports:
+   - "80:80"
+   - "443:443"
+  volumes:
+   - ./site:/var/www/html
+  links:
+   - db
+#  command: apt-get update
+#  command: apt-get install -y g++
+#  command: ln -s /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled/
+#  command: ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled/
+#  command: docker-php-ext-install mbstring
+#  command: apt-get install -y libfreetype6-dev
+#  command: apt-get install -y libgd-dev
+#  command: docker-php-ext-configure gd --with-freetype-dir=/usr
+#  command: docker-php-ext-install gd exif
+#  command: docker-php-ext-install mysql mysqli pdo pdo_mysql
+#  command: a2enmod rewrite
+#  command: apt-get autoremove -y
+#  command: apt-get clean all
+
+db:
+  container_name: db
+  image: mysql:5.7
+  volumes:
+   - ./db:/var/lib/mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=xeon2accept
+   - MYSQL_DATABASE=cpa-iesi
+   - MYSQL_USER=cpd

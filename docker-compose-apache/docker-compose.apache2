@@ -1,0 +1,42 @@
+php:
+  image: php:5.6-apache
+  ports:
+   - "80:80"
+   - "443:443"
+  volumes:
+   - ./site:/var/www/html
+  links:
+   - db
+  command:
+   /bin/bash -c "apt-get update"
+   /bin/bash -c "apt-get install -y g++"
+
+   # habilitando os módulos 'header' e 'rewrite'
+   /bin/bash -c "ln -s /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled"
+   /bin/bash -c "ln -s /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled"
+
+   # instalando a extensão 'mbstring'
+   /bin/bash -c "docker-php-ext-install mbstring"
+
+   # instalando as extensões 'gd'
+   /bin/bash -c "apt-get install -y libfreetype6-dev"
+   /bin/bash -c "apt-get install -y libgd-dev"
+   /bin/bash -c "docker-php-ext-configure gd --with-freetype-dir=/usr"
+   /bin/bash -c "docker-php-ext-install gd exif"
+
+   # instalando as extensões do 'mysql'
+   /bin/bash -c "docker-php-ext-install mysql mysqli pdo pdo_mysql"
+
+   # habilitando o módulo 'rewrite'
+   /bin/bash -c "a2enmod rewrite"
+
+   /bin/bash -c "apt-get autoremove -y && apt-get clean all"
+
+db:
+  image: mysql:5.7
+  volumes:
+   - ./db:/var/lib/mysql
+  environment:
+   - MYSQL_ROOT_PASSWORD=xeon2accept
+   - MYSQL_DATABASE=cpa-iesi
+   - MYSQL_USER=cpd

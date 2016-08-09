@@ -1,0 +1,22 @@
+web:
+  container_name: web
+  image: nginx:1.9
+  volumes:
+    - ./site:/usr/share/nginx/html
+    - ./nginx.conf:/etc/nginx/conf.d/default.conf
+  ports:
+    - "80:80"
+    - "443:443"
+  links:
+    - db
+  command: ["nginx", "-g", "daemon off;"]
+
+db:
+  container_name: db
+  image: mysql:5.7
+  volumes:
+    - ./db:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=xeon2accept
+    - MYSQL_DATABASE=cpa-iesi
+    - MYSQL_USER=cpd
