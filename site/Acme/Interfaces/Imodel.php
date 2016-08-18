@@ -2,7 +2,7 @@
 
 namespace Acme\Interfaces;
 
-Interfaces Imodel{
+Interface Imodel{
     public function create($attributes);
     public function read();
     public function update($id, $attributes);

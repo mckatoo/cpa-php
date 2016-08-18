@@ -78,11 +78,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <?php
-                            $conn = new Database\Connection;
-                            $conn->connection();
-                        ?>
-                        <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'.php' : 'includes/home.php' ?>
+                        <?php require (isset($_GET['p'])) ? 'includes/'.$_GET['p'].'.php' : 'includes/questao.php' ?>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

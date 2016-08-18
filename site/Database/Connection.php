@@ -1,7 +1,7 @@
 <?php
 namespace Database;
 
-use \PDO;
+use PDO;
 
 class Connection{
     const INIFILE = './config/database.ini';
@@ -9,7 +9,7 @@ class Connection{
 
     public function __construct(){
         $this->iniData = parse_ini_file(self::INIFILE);
-        dump($this->iniData);
+        // dump($this->iniData);
     }
 
     public function connection(){
