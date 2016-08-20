@@ -18,23 +18,33 @@
 <table width="100%" class="ui table">
     <thead>
         <tr>
-            <th>Avaliação</th>
-            <th>Email</th>
+            <th>Questão</th>
             <th>Editar</th>
             <th>Deletar</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $questao = new Acme\Models\QuestaoProfModel;
+        $questao = new Acme\Models\QuestaoModel;
         $questaos = $questao->read();
             foreach($questaos as $questao):
         ?>
         <tr>
-            <td><?php echo $questao->name; ?></td>
-            <td><?php echo $questao->email; ?></td>
-            <td><button class="ui green button"><i class="edit icon"></i>Editar</button></td>
-             <td><button class="ui red button"><i class="remove icon"></i>Deletar</button></td>
+            <td><?php echo $questao->questao ?></td>
+            <td>
+                <?php if($questao->questao == 0) ?>
+                    <button type="button" name="btativo" class="btn btn-default btn-circle">
+                        <i class="fa fa-uncheck"></i>
+                    </button>
+                <?php endif ?>
+                <?php if($questao->questao == 1) ?>
+                    <button type="button" name="btativo" class="btn btn-default btn-circle">
+                        <i class="fa fa-check"></i>
+                    </button>
+                <?php endif ?>
+            </td>
+            <td><button class="btn btn-primary">Editar</button></td>
+            <td><button class="btn btn-danger">Deletar</button></td>
         </tr>
         <?php endforeach; ?>
     </tbody>

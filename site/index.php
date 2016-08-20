@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>CPA 2016</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
