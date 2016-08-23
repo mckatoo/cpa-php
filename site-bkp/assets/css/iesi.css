@@ -1,0 +1,19 @@
+@media (min-width: 768px) {
+    .navbar-brand{
+        padding: 8px 10px;
+    }
+}
+
+.navbar-top-links .dropdown-menu li a {
+    color: #337ab7;
+}
+
+.pull-right-m{
+    padding: 0px;
+    text-align: right;
+    width: auto;
+}
+
+.panel-footer-m{
+    text-align: right;
+}

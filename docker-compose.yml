@@ -1,33 +1,33 @@
-php:
-  container_name: web
-  build: .
-  ports:
+web:
+    container_name: web
+    build: .
+    ports:
    - "80:80"
    - "443:443"
-  volumes:
-   - ./site:/var/www/html
-  links:
+   volumes:
+   - ./site:/var/www/web/public
+   links:
    - db
 
 db:
-  container_name: db
-  image: mysql:5.7
-  volumes:
-   - ./db:/var/lib/mysql
-  environment:
-   - MYSQL_ROOT_PASSWORD=xeon2accept
-   - MYSQL_DATABASE=cpa-iesi
-   - MYSQL_USER=cpd
+    container_name: db
+    image: mysql:5.7
+    volumes:
+        - ./db:/var/lib/mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=xeon2accept
+        - MYSQL_DATABASE=cpa-iesi
+        - MYSQL_USER=cpd
 
 phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
     restart: always
     links:
-      - db
+        - db
     ports:
-      - 8183:80
+        - 8183:80
     environment:
-      MYSQL_USERNAME: cpd
-      MYSQL_ROOT_PASSWORD: xeon2accept
-      PMA_ARBITRARY: 1
+        MYSQL_USERNAME: cpd
+        MYSQL_ROOT_PASSWORD: xeon2accept
+        PMA_ARBITRARY: 1
